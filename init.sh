@@ -6,7 +6,7 @@ export AKS_NAME=contoso-video
 export ACR_NAME=contosocontainerregistry$RANDOM
 
 echo "Searching for resource group..."
-az group create -n $RESOURCE_GROUP_NAME -l eastus
+az group create -n $RESOURCE_GROUP_NAME -l northeurope
 
 echo "Creating cluster..."
 az aks create \
@@ -17,7 +17,7 @@ az aks create \
   --dns-name-prefix $AKS_NAME \
   --enable-managed-identity \
   --generate-ssh-keys \
-  --node-vm-size Standard_B2s
+  --node-vm-size Standard_D2as_v4
 
 echo "Obtaining credentials..."
 az aks get-credentials -n $AKS_NAME -g $RESOURCE_GROUP_NAME
